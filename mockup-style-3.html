@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Style Mockup 3 - Refined Luxury</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.7;
+            color: #2c2c2c;
+            background-color: #f9f9f9;
+        }
+
+        /* Style 3: Refined Luxury with subtle elegance */
+        .hero {
+            height: 100vh;
+            background: 
+                linear-gradient(rgba(44, 44, 44, 0.7), rgba(139, 69, 19, 0.3)),
+                radial-gradient(circle at center, #3a3a3a 0%, #1a1a1a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            border: 1px solid rgba(139, 69, 19, 0.3);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 200px;
+            border: 1px solid rgba(139, 69, 19, 0.2);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            text-align: center;
+            color: white;
+            z-index: 2;
+            max-width: 600px;
+            padding: 3rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            font-family: 'Georgia', serif;
+            letter-spacing: 3px;
+            font-style: italic;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: transparent;
+            border: 1px solid rgba(139, 69, 19, 0.8);
+            color: #8B4513;
+            text-decoration: none;
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.4s ease;
+            font-size: 0.9rem;
+        }
+
+        .cta-button:hover {
+            background: rgba(139, 69, 19, 0.1);
+            border-color: #8B4513;
+        }
+
+        .section {
+            padding: 6rem 5%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section h2 {
+            font-size: 2.2rem;
+            font-weight: 400;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: #2c2c2c;
+            font-style: italic;
+            position: relative;
+        }
+
+        .section h2::before,
+        .section h2::after {
+            content: '—';
+            position: absolute;
+            top: 50%;
+            color: #8B4513;
+            font-size: 1rem;
+        }
+
+        .section h2::before {
+            left: -3rem;
+        }
+
+        .section h2::after {
+            right: -3rem;
+        }
+
+        .elegant-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin: 4rem 0;
+            align-items: start;
+        }
+
+        .content-box {
+            padding: 2.5rem;
+            background: white;
+            border: 1px solid #e0e0e0;
+            position: relative;
+        }
+
+        .content-box::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 1px solid rgba(139, 69, 19, 0.2);
+            z-index: -1;
+        }
+
+        .content-box h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: #8B4513;
+            font-style: italic;
+        }
+
+        .features-showcase {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin: 4rem 0;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: white;
+            border-top: 3px solid #8B4513;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1.5rem;
+            background: #f0f0f0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #8B4513;
+        }
+
+        .luxury-section {
+            background: #2c2c2c;
+            color: white;
+            margin: 4rem -5% 0;
+            padding: 5rem 5%;
+        }
+
+        .luxury-section h2 {
+            color: white;
+        }
+
+        .luxury-section h2::before,
+        .luxury-section h2::after {
+            color: #8B4513;
+        }
+
+        .contact-luxury {
+            background: 
+                linear-gradient(135deg, #f9f9f9 0%, #e8e8e8 100%);
+            padding: 5rem;
+            margin: 4rem 0;
+            text-align: center;
+        }
+
+        .contact-form-wrapper {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+            color: #2c2c2c;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-bottom: 2px solid #e0e0e0;
+            background: transparent;
+            font-family: 'Georgia', serif;
+            font-size: 1rem;
+            color: #2c2c2c;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-bottom-color: #8B4513;
+        }
+
+        .submit-btn {
+            background: #8B4513;
+            color: white;
+            padding: 1rem 3rem;
+            border: none;
+            cursor: pointer;
+            font-family: 'Georgia', serif;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: #654321;
+        }
+
+        @media (max-width: 768px) {
+            .elegant-grid,
+            .features-showcase {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Parkview Manor</h1>
+            <p>Where sophistication meets comfort in the heart of Johannesburg</p>
+            <a href="#details" class="cta-button">View Residence</a>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Refined Luxury</h2>
+        <div class="elegant-grid">
+            <div class="content-box">
+                <h3>Sophisticated Design</h3>
+                <p>This style embraces classic elegance with serif typography, subtle geometric elements, and refined spacing. The hero features gentle circular overlays for a sophisticated, timeless feel.</p>
+            </div>
+            <div class="content-box">
+                <h3>Premium Feel</h3>
+                <p>Double-border effects and tasteful shadows create depth without overwhelming the minimalist aesthetic. Every element is carefully considered for maximum elegance.</p>
+            </div>
+        </div>
+
+        <div class="features-showcase">
+            <div class="feature-card">
+                <div class="feature-icon">◊</div>
+                <h4>Elegant Typography</h4>
+                <p>Classic serif fonts with italic accents for headlines</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">○</div>
+                <h4>Subtle Patterns</h4>
+                <p>Gentle circular overlays and decorative elements</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">◈</div>
+                <h4>Refined Layout</h4>
+                <p>Sophisticated grid systems with generous whitespace</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="luxury-section">
+        <h2>Distinguished Living</h2>
+        <p style="text-align: center; font-size: 1.2rem; max-width: 600px; margin: 0 auto;">This style communicates luxury and sophistication through subtle details, premium materials representation, and timeless design principles that appeal to discerning clientele.</p>
+    </div>
+
+    <div class="contact-luxury">
+        <h2>Contact Style Preview</h2>
+        <div class="contact-form-wrapper">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name">
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email">
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone">
+            </div>
+            <div class="form-group">
+                <label for="message">Your Message</label>
+                <textarea id="message" name="message" rows="4"></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send Enquiry</button>
+        </div>
+    </div>
+</body>
+</html>
