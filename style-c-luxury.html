@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parkview Manor - Premium Flat in Johannesburg</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600;700&family=Source+Sans+Pro:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            line-height: 1.7;
+            color: #2c2c2c;
+            background-color: #fafafa;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(248, 248, 248, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 5%;
+            border-bottom: 1px solid #e8e8e8;
+            transition: all 0.3s ease;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: #2c2c2c;
+            font-style: italic;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            color: #666;
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #8B7355;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: 
+                linear-gradient(rgba(139, 115, 85, 0.3), rgba(139, 115, 85, 0.3)),
+                url('Pics/Screenshot 2025-08-19 at 16.49.53.png') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 200px;
+            border: 2px solid rgba(139, 115, 85, 0.3);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            border: 1px solid rgba(139, 115, 85, 0.2);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            text-align: center;
+            color: white;
+            z-index: 2;
+            max-width: 700px;
+            padding: 3rem;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
+            font-style: italic;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            font-weight: 300;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: transparent;
+            border: 2px solid rgba(139, 115, 85, 0.8);
+            color: #8B7355;
+            text-decoration: none;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.4s ease;
+            font-size: 0.9rem;
+        }
+
+        .cta-button:hover {
+            background: rgba(139, 115, 85, 0.2);
+            border-color: #8B7355;
+            color: white;
+        }
+
+        /* Sections */
+        .section {
+            padding: 6rem 5%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-alt {
+            background: #f5f5f5;
+            margin-left: 0;
+            margin-right: 0;
+            max-width: none;
+            padding-left: 5%;
+            padding-right: 5%;
+        }
+
+        .section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 300;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: #2c2c2c;
+            font-style: italic;
+            position: relative;
+        }
+
+        .section h2::before,
+        .section h2::after {
+            content: '◇';
+            position: absolute;
+            top: 50%;
+            color: #8B7355;
+            font-size: 1.2rem;
+            font-style: normal;
+        }
+
+        .section h2::before {
+            left: -3rem;
+        }
+
+        .section h2::after {
+            right: -3rem;
+        }
+
+        /* Elegant Content */
+        .elegant-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin: 4rem 0;
+            align-items: start;
+        }
+
+        .content-box {
+            padding: 2.5rem;
+            background: white;
+            border: 1px solid #e0e0e0;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .content-box::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 1px solid rgba(139, 115, 85, 0.2);
+            z-index: -1;
+        }
+
+        .content-box h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #8B7355;
+            font-style: italic;
+        }
+
+        .content-box p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        /* Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .gallery-item {
+            aspect-ratio: 4/3;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            border: 3px solid #8B7355;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        /* Features */
+        .features-showcase {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin: 4rem 0;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: white;
+            border-top: 4px solid #8B7355;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 1.5rem;
+            background: #f5f5f5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: #8B7355;
+            border: 2px solid #8B7355;
+        }
+
+        .feature-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #2c2c2c;
+            font-style: italic;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Stats */
+        .luxury-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+            margin: 4rem 0;
+            padding: 4rem 0;
+            border-top: 2px solid #8B7355;
+            border-bottom: 2px solid #8B7355;
+        }
+
+        .luxury-stat {
+            text-align: center;
+        }
+
+        .luxury-stat .number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 300;
+            color: #8B7355;
+            display: block;
+            font-style: italic;
+        }
+
+        .luxury-stat .label {
+            color: #666;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Contact */
+        .luxury-contact {
+            background: #2c2c2c;
+            color: white;
+            padding: 6rem 5%;
+            margin-top: 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .contact-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: #8B7355;
+            font-style: italic;
+        }
+
+        .contact-info p {
+            margin-bottom: 1rem;
+            color: #ccc;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+            color: #ccc;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1.2rem;
+            border: none;
+            border-bottom: 2px solid #555;
+            background: transparent;
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 1rem;
+            color: white;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-bottom-color: #8B7355;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #888;
+        }
+
+        .submit-btn {
+            background: #8B7355;
+            color: white;
+            padding: 1.2rem 3rem;
+            border: none;
+            cursor: pointer;
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: #a0845f;
+        }
+
+        /* Map */
+        .map-container {
+            height: 400px;
+            background: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 2rem 0;
+            border: 3px solid #8B7355;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section {
+                padding: 4rem 5%;
+            }
+
+            .elegant-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .luxury-stats,
+            .features-showcase {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .section h2::before,
+            .section h2::after {
+                display: none;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">Parkview Manor</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#location">Location</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Sophisticated<br>Living</h1>
+            <p>Experience the finest in furnished accommodation at Parkview Manor</p>
+            <a href="#about" class="cta-button">Discover Excellence</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <h2 class="fade-in">Timeless Elegance</h2>
+        <div class="elegant-grid">
+            <div class="content-box fade-in">
+                <h3>Distinguished Address</h3>
+                <p>Nestled within the prestigious Parkview Manor, this exquisitely furnished residence represents the pinnacle of sophisticated living. Located merely 20 minutes from Chris Hani Baragwanath Academic Hospital, it offers unparalleled convenience for discerning professionals.</p>
+                <p>Every detail has been meticulously curated to create an atmosphere of refined luxury and comfort.</p>
+            </div>
+            <div class="content-box fade-in">
+                <h3>Premium Amenities</h3>
+                <p>The residence features the finest furnishings, state-of-the-art appliances, and comprehensive security measures. Each space has been thoughtfully designed to provide both aesthetic pleasure and functional excellence.</p>
+                <p>This first-floor sanctuary offers tranquility while maintaining proximity to urban conveniences.</p>
+            </div>
+        </div>
+        <div class="luxury-stats fade-in">
+            <div class="luxury-stat">
+                <span class="number">2</span>
+                <span class="label">Bedrooms</span>
+            </div>
+            <div class="luxury-stat">
+                <span class="number">2</span>
+                <span class="label">Bathrooms</span>
+            </div>
+            <div class="luxury-stat">
+                <span class="number">24/7</span>
+                <span class="label">Concierge</span>
+            </div>
+            <div class="luxury-stat">
+                <span class="number">Premium</span>
+                <span class="label">Location</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="section section-alt">
+        <h2 class="fade-in">Residence Gallery</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item fade-in">
+                <img src="Pics/PHOTO-2025-08-19-09-04-43.jpg" alt="Master Suite">
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="Pics/PHOTO-2025-08-19-09-04-45.jpg" alt="Reception Room">
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="Pics/PHOTO-2025-08-19-09-04-46.jpg" alt="Gourmet Kitchen">
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="Pics/PHOTO-2025-08-19-09-04-44.jpg" alt="Private Garage">
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="Pics/PHOTO-2025-08-19-09-04-43 2.jpg" alt="Bedroom Details">
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="Pics/PHOTO-2025-08-19-09-04-45 2.jpg" alt="Living Spaces">
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="section">
+        <h2 class="fade-in">Distinguished Features</h2>
+        <div class="features-showcase">
+            <div class="feature-card fade-in">
+                <div class="feature-icon">
+                    <span class="material-icons">security</span>
+                </div>
+                <h3>Concierge Security</h3>
+                <p>Round-the-clock professional security service ensuring absolute peace of mind</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">
+                    <span class="material-icons">bed</span>
+                </div>
+                <h3>Luxury Suites</h3>
+                <p>Two beautifully appointed bedrooms with premium furnishings and bespoke storage</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">
+                    <span class="material-icons">restaurant</span>
+                </div>
+                <h3>Gourmet Kitchen</h3>
+                <p>Professional-grade appliances and elegant design for culinary excellence</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">
+                    <span class="material-icons">wifi</span>
+                </div>
+                <h3>Premium Connectivity</h3>
+                <p>High-speed unlimited internet service included for modern living needs</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">
+                    <span class="material-icons">garage</span>
+                </div>
+                <h3>Private Garage</h3>
+                <p>Covered parking bay with additional guest parking facilities</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">
+                    <span class="material-icons">power</span>
+                </div>
+                <h3>Uninterrupted Power</h3>
+                <p>Advanced backup power systems ensure continuous comfort</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="location" class="section section-alt">
+        <h2 class="fade-in">Premier Location</h2>
+        <div class="elegant-grid">
+            <div class="content-box fade-in">
+                <h3>Medical Professional's Haven</h3>
+                <p>Strategically positioned for healthcare professionals, with a convenient 20-minute commute to Chris Hani Baragwanath Academic Hospital. The morning and evening journeys flow seamlessly against traffic patterns.</p>
+                <p>Parkview's tree-lined boulevards provide a serene residential atmosphere while maintaining excellent connectivity.</p>
+            </div>
+            <div class="content-box fade-in">
+                <h3>Urban Sophistication</h3>
+                <p>The renowned Rosebank district lies just 5 minutes away, offering world-class dining, shopping, and cultural experiences. Premium amenities and services are readily accessible.</p>
+                <p>This location represents the perfect synthesis of suburban tranquility and metropolitan convenience.</p>
+            </div>
+        </div>
+        <div class="map-container fade-in">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3581.0876205892346!2d28.0089!3d-26.1289!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e950c0c0c0c0c0c%3A0x0!2s7%20Lower%20Park%20Dr%2C%20Parkview%2C%20Randburg%2C%202193!5e0!3m2!1sen!2sza!4v1234567890"
+                width="100%" 
+                height="100%" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy">
+            </iframe>
+        </div>
+        <div class="address-info fade-in" style="text-align: center; margin-top: 3rem;">
+            <h3 style="color: #8B7355; margin-bottom: 1rem; font-family: 'Playfair Display', serif; font-style: italic;"><span class="material-icons" style="vertical-align: middle; margin-right: 5px;">location_on</span>Parkview Manor</h3>
+            <p style="color: #666; font-size: 1.1rem;">7 Lower Park Drive, Parkview, Randburg, 2193</p>
+        </div>
+    </section>
+
+    <!-- Costs Section -->
+    <section id="costs" class="section">
+        <h2 class="fade-in">Investment Details</h2>
+        <div class="content-box fade-in" style="text-align: center; max-width: 600px; margin: 0 auto;">
+            <h3 style="font-size: 2.5rem; color: #8B7355; margin-bottom: 1rem;"><span class="material-icons" style="vertical-align: middle; margin-right: 10px; font-size: 2rem;">monetization_on</span>R12,500 Monthly</h3>
+            <p style="color: #666; margin-bottom: 3rem; font-size: 1.1rem;">Comprehensive luxury accommodation with all amenities included</p>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0;">
+                <div>
+                    <h4 style="color: #8B7355; margin-bottom: 1rem;">✧ Premium Connectivity</h4>
+                    <h4 style="color: #8B7355; margin-bottom: 1rem;">✧ Secured Parking</h4>
+                </div>
+                <div>
+                    <h4 style="color: #8B7355; margin-bottom: 1rem;">✧ Designer Furnishings</h4>
+                    <h4 style="color: #8B7355; margin-bottom: 1rem;">✧ 24-Hour Security</h4>
+                </div>
+            </div>
+            
+            <p style="margin-top: 3rem; color: #666; font-style: italic;">Bespoke housekeeping services available: R400 (comprehensive) or R250 (essential)</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="luxury-contact">
+        <h2 class="fade-in" style="color: white;">Arrange Viewing</h2>
+        <div class="contact-grid">
+            <div class="contact-info fade-in">
+                <h3>Private Consultation</h3>
+                <p><span class="material-icons" style="vertical-align: middle; margin-right: 5px;">email</span> Available upon request</p>
+                <p><span class="material-icons" style="vertical-align: middle; margin-right: 5px;">phone</span> Available upon request</p>
+                <p><span class="material-icons" style="vertical-align: middle; margin-right: 5px;">location_on</span> Parkview, Johannesburg</p>
+                
+                <h3 style="margin-top: 3rem;">Distinguished Clientele</h3>
+                <p>• Healthcare executives and professionals</p>
+                <p>• Corporate leaders and consultants</p>
+                <p>• Those seeking premium furnished accommodation</p>
+                
+                <h3 style="margin-top: 3rem;">Exclusive Benefits</h3>
+                <p>• Immediate occupancy available</p>
+                <p>• Professional maintenance service</p>
+                <p>• Prestigious Parkview address</p>
+            </div>
+            <form class="contact-form fade-in" id="contactForm">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Contact Number</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Submit Inquiry</button>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your inquiry! We will contact you within 24 hours to arrange a private viewing.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
