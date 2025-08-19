@@ -16,72 +16,25 @@
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
             color: #2c2c2c;
-            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+            background: #ffffff;
             min-height: 100vh;
             overflow-x: hidden;
         }
 
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            background: 
-                linear-gradient(rgba(44, 44, 44, 0.8), rgba(44, 44, 44, 0.8)),
-                url('Pics/Screenshot 2025-08-19 at 16.49.53.png') center/cover no-repeat;
-        }
-
-        .hero-content {
-            text-align: center;
-            color: white;
-            z-index: 2;
-            max-width: 800px;
-            padding: 3rem;
-        }
-
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            font-weight: 300;
-            margin-bottom: 1rem;
-            letter-spacing: 2px;
-            font-style: italic;
-        }
-
-        .tagline {
-            font-size: 1.3rem;
-            margin-bottom: 3rem;
-            font-weight: 300;
-            opacity: 0.9;
-        }
-
-        .subtitle {
-            font-size: 1.1rem;
-            margin-bottom: 4rem;
-            opacity: 0.8;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
         /* Style Selection */
         .style-selection {
-            padding: 6rem 5%;
+            padding: 4rem 5%;
             max-width: 1200px;
             margin: 0 auto;
-            background: white;
-            margin-top: -3rem;
-            position: relative;
-            z-index: 10;
-            border-radius: 10px 10px 0 0;
-            box-shadow: 0 -10px 30px rgba(0,0,0,0.1);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .selection-title {
             text-align: center;
-            font-size: 2.5rem;
+            font-size: 3rem;
             font-weight: 300;
             margin-bottom: 1rem;
             color: #2c2c2c;
@@ -90,8 +43,11 @@
         .selection-subtitle {
             text-align: center;
             color: #666;
-            margin-bottom: 4rem;
-            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .styles-grid {
@@ -276,70 +232,16 @@
             background: #a0845f;
         }
 
-        /* Property Info */
-        .property-info {
-            background: #f8f9fa;
-            padding: 4rem 5%;
-            text-align: center;
-        }
-
-        .info-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .info-title {
-            font-size: 2rem;
-            font-weight: 300;
-            margin-bottom: 2rem;
-            color: #2c2c2c;
-        }
-
-        .property-highlights {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-
-        .highlight {
-            padding: 1.5rem;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-        }
-
-        .highlight-number {
-            font-size: 2rem;
-            font-weight: 300;
-            color: #4a4a4a;
-            display: block;
-        }
-
-        .highlight-label {
-            color: #666;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .logo {
-                font-size: 2.5rem;
+            .selection-title {
+                font-size: 2rem;
             }
 
             .styles-grid {
                 grid-template-columns: 1fr;
                 gap: 2rem;
-            }
-
-            .property-highlights {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .hero-content {
-                padding: 2rem;
             }
 
             .style-selection {
@@ -367,19 +269,10 @@
     </style>
 </head>
 <body>
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1 class="logo">Parkview Manor</h1>
-            <p class="tagline">Premium Furnished Apartment</p>
-            <p class="subtitle">Experience sophisticated living in Johannesburg's most desirable location. Just 20 minutes from Chris Hani Baragwanath Hospital.</p>
-        </div>
-    </section>
-
     <!-- Style Selection -->
     <section class="style-selection">
-        <h2 class="selection-title">Choose Your Style</h2>
-        <p class="selection-subtitle">Select the design aesthetic that resonates with you. Each style showcases the same beautiful apartment with different visual presentations.</p>
+        <h2 class="selection-title">Parkview Manor - Choose Your Style</h2>
+        <p class="selection-subtitle">Select the design aesthetic that best represents your vision. Each style showcases the same beautiful furnished apartment with different visual presentations.</p>
         
         <div class="styles-grid">
             <!-- Style A: Industrial Elegance -->
@@ -438,35 +331,6 @@
                     <a href="style-c-luxury.html" class="view-style-btn">View Luxury Style</a>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Property Info -->
-    <section class="property-info">
-        <div class="info-content">
-            <h2 class="info-title">About This Property</h2>
-            <p>This fully furnished apartment at Parkview Manor offers premium living with all amenities included. Located strategically for healthcare professionals with easy access to Chris Hani Baragwanath Hospital.</p>
-            
-            <div class="property-highlights">
-                <div class="highlight">
-                    <span class="highlight-number">R12,500</span>
-                    <span class="highlight-label">Per Month</span>
-                </div>
-                <div class="highlight">
-                    <span class="highlight-number">2</span>
-                    <span class="highlight-label">Bedrooms</span>
-                </div>
-                <div class="highlight">
-                    <span class="highlight-number">2</span>
-                    <span class="highlight-label">Bathrooms</span>
-                </div>
-                <div class="highlight">
-                    <span class="highlight-number">24/7</span>
-                    <span class="highlight-label">Security</span>
-                </div>
-            </div>
-            
-            <p style="color: #666; margin-top: 2rem;">All styles showcase the same property with different visual presentations. Choose the one that best represents your taste and brand aesthetic.</p>
         </div>
     </section>
 
