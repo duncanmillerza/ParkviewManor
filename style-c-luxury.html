@@ -41,6 +41,7 @@
             align-items: center;
             max-width: 1200px;
             margin: 0 auto;
+            position: relative;
         }
 
         .logo {
@@ -69,6 +70,38 @@
 
         .nav-links a:hover {
             color: #8B7355;
+        }
+
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0.5rem;
+            z-index: 1001;
+        }
+
+        .hamburger-line {
+            width: 25px;
+            height: 3px;
+            background: #8B7355;
+            margin: 3px 0;
+            transition: all 0.3s ease;
+            transform-origin: center;
+        }
+
+        .mobile-menu-btn.active .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .mobile-menu-btn.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-btn.active .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
         }
 
         /* Hero Section */
@@ -466,6 +499,37 @@
 
             .nav-links {
                 display: none;
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 250px;
+                background: rgba(248, 248, 248, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: right 0.3s ease;
+                z-index: 1000;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                right: 0;
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 1.5rem 0;
+            }
+
+            .nav-links a {
+                font-size: 1.2rem;
+                font-weight: 500;
+            }
+
+            .mobile-menu-btn {
+                display: flex;
             }
 
             .section h2::before,
@@ -492,7 +556,7 @@
     <nav class="navbar">
         <div class="nav-content">
             <div class="logo">Parkview Manor</div>
-            <ul class="nav-links">
+            <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#gallery">Gallery</a></li>
@@ -500,6 +564,11 @@
                 <li><a href="#location">Location</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+            </button>
         </div>
     </nav>
 
@@ -508,7 +577,10 @@
         <div class="hero-content">
             <h1>FULLY<br>FURNISHED</h1>
             <p>Premium apartment at Parkview Manor, Parkview - 20 minutes to Chris Hani Baragwanath Hospital</p>
-            <a href="#about" class="cta-button">View Details</a>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="#about" class="cta-button">View Details</a>
+                <a href="#contact" class="cta-button" style="background: transparent; border: 2px solid rgba(139, 115, 85, 0.8); color: #8B7355;">Enquire Now</a>
+            </div>
         </div>
     </section>
 
@@ -706,15 +778,15 @@
                 <p><span class="material-icons" style="vertical-align: middle; margin-right: 5px;">location_on</span> Parkview, Johannesburg</p>
                 
                 <h3 style="margin-top: 3rem;">Perfect For</h3>
-                <p><span class="material-icons" style="vertical-align: middle; margin-right: 5px; color: #4a4a4a;">check_circle</span>Healthcare professionals at Chris Hani Baragwanath</p>
-                <p><span class="material-icons" style="vertical-align: middle; margin-right: 5px; color: #4a4a4a;">check_circle</span>Working professionals seeking convenience</p>
-                <p><span class="material-icons" style="vertical-align: middle; margin-right: 5px; color: #4a4a4a;">check_circle</span>Anyone wanting fully furnished accommodation</p>
+                <p><span class="material-icons" style="vertical-align: middle; margin-right: 5px; color: #ffffff;">check_circle</span>Healthcare professionals at Chris Hani Baragwanath</p>
+                <p><span class="material-icons" style="vertical-align: middle; margin-right: 5px; color: #ffffff;">check_circle</span>Working professionals seeking convenience</p>
+                <p><span class="material-icons" style="vertical-align: middle; margin-right: 5px; color: #ffffff;">check_circle</span>Anyone wanting fully furnished accommodation</p>
                 
                 <h3 style="margin-top: 3rem;">Key Benefits</h3>
-                <p><span class="material-icons" style="vertical-align: middle; margin-right: 5px; color: #4a4a4a;">home</span>Move-in ready - fully furnished</p>
-                <p><span class="material-icons" style="vertical-align: middle; margin-right: 5px; color: #4a4a4a;">directions_car</span>Stress-free commute against traffic</p>
-                <p><span class="material-icons" style="vertical-align: middle; margin-right: 5px; color: #4a4a4a;">security</span>24-hour security for peace of mind</p>
-                <p><span class="material-icons" style="vertical-align: middle; margin-right: 5px; color: #4a4a4a;">monetization_on</span>All-inclusive pricing with Wi-Fi & parking</p>
+                <p><span class="material-icons" style="vertical-align: middle; margin-right: 5px; color: #ffffff;">home</span>Move-in ready - fully furnished</p>
+                <p><span class="material-icons" style="vertical-align: middle; margin-right: 5px; color: #ffffff;">directions_car</span>Stress-free commute against traffic</p>
+                <p><span class="material-icons" style="vertical-align: middle; margin-right: 5px; color: #ffffff;">security</span>24-hour security for peace of mind</p>
+                <p><span class="material-icons" style="vertical-align: middle; margin-right: 5px; color: #ffffff;">monetization_on</span>All-inclusive pricing with Wi-Fi & parking</p>
             </div>
             <form class="contact-form fade-in" id="contactForm">
                 <div class="form-group">
@@ -739,6 +811,31 @@
     </section>
 
     <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenuBtn.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.classList.remove('active');
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.navbar')) {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.classList.remove('active');
+            }
+        });
+
         // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
