@@ -218,7 +218,7 @@
         /* Gallery */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1rem;
             margin: 4rem 0;
         }
@@ -229,11 +229,13 @@
             position: relative;
             cursor: pointer;
             border: 1px solid #f0f0f0;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 8px;
         }
 
         .gallery-item:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
         }
 
         .gallery-item img {
@@ -241,6 +243,116 @@
             height: 100%;
             object-fit: cover;
             transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-item::after {
+            content: '🔍';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2rem;
+            color: white;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            cursor: pointer;
+        }
+
+        .lightbox.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            cursor: default;
+        }
+
+        .lightbox-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .lightbox-close:hover {
+            transform: scale(1.2);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            background: rgba(0,0,0,0.5);
+            border: none;
+            padding: 1rem;
+            border-radius: 50%;
+            transition: background 0.3s ease;
+            z-index: 2001;
+        }
+
+        .lightbox-nav:hover {
+            background: rgba(0,0,0,0.8);
+        }
+
+        .lightbox-prev {
+            left: 20px;
+        }
+
+        .lightbox-next {
+            right: 20px;
+        }
+
+        .lightbox-counter {
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 1rem;
+            background: rgba(0,0,0,0.7);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
         }
 
         /* Features */
@@ -532,25 +644,58 @@
     <section id="gallery" class="section section-alt">
         <h2 class="fade-in">GALLERY</h2>
         <div class="gallery-grid">
-            <div class="gallery-item fade-in">
+            <div class="gallery-item fade-in" data-image="Pics/Screenshot 2025-08-19 at 16.49.53.png">
+                <img src="Pics/Screenshot 2025-08-19 at 16.49.53.png" alt="Building Entrance">
+            </div>
+            <div class="gallery-item fade-in" data-image="Pics/PHOTO-2025-08-19-09-04-43.jpg">
                 <img src="Pics/PHOTO-2025-08-19-09-04-43.jpg" alt="Master Bedroom">
             </div>
-            <div class="gallery-item fade-in">
+            <div class="gallery-item fade-in" data-image="Pics/PHOTO-2025-08-19-09-04-43 2.jpg">
+                <img src="Pics/PHOTO-2025-08-19-09-04-43 2.jpg" alt="Bedroom Details">
+            </div>
+            <div class="gallery-item fade-in" data-image="Pics/PHOTO-2025-08-19-09-04-43 3.jpg">
+                <img src="Pics/PHOTO-2025-08-19-09-04-43 3.jpg" alt="Bedroom View">
+            </div>
+            <div class="gallery-item fade-in" data-image="Pics/PHOTO-2025-08-19-09-04-44.jpg">
+                <img src="Pics/PHOTO-2025-08-19-09-04-44.jpg" alt="Covered Parking">
+            </div>
+            <div class="gallery-item fade-in" data-image="Pics/PHOTO-2025-08-19-09-04-44 2.jpg">
+                <img src="Pics/PHOTO-2025-08-19-09-04-44 2.jpg" alt="Parking Area">
+            </div>
+            <div class="gallery-item fade-in" data-image="Pics/PHOTO-2025-08-19-09-04-44 3.jpg">
+                <img src="Pics/PHOTO-2025-08-19-09-04-44 3.jpg" alt="Parking Details">
+            </div>
+            <div class="gallery-item fade-in" data-image="Pics/PHOTO-2025-08-19-09-04-45.jpg">
                 <img src="Pics/PHOTO-2025-08-19-09-04-45.jpg" alt="Living Room">
             </div>
-            <div class="gallery-item fade-in">
-                <img src="Pics/PHOTO-2025-08-19-09-04-46.jpg" alt="Kitchen">
-            </div>
-            <div class="gallery-item fade-in">
-                <img src="Pics/PHOTO-2025-08-19-09-04-44.jpg" alt="Parking">
-            </div>
-            <div class="gallery-item fade-in">
-                <img src="Pics/PHOTO-2025-08-19-09-04-43 2.jpg" alt="Bedroom Detail">
-            </div>
-            <div class="gallery-item fade-in">
+            <div class="gallery-item fade-in" data-image="Pics/PHOTO-2025-08-19-09-04-45 2.jpg">
                 <img src="Pics/PHOTO-2025-08-19-09-04-45 2.jpg" alt="Living Area">
             </div>
+            <div class="gallery-item fade-in" data-image="Pics/PHOTO-2025-08-19-09-04-45 3.jpg">
+                <img src="Pics/PHOTO-2025-08-19-09-04-45 3.jpg" alt="Lounge Space">
+            </div>
+            <div class="gallery-item fade-in" data-image="Pics/PHOTO-2025-08-19-09-04-46.jpg">
+                <img src="Pics/PHOTO-2025-08-19-09-04-46.jpg" alt="Kitchen">
+            </div>
+            <div class="gallery-item fade-in" data-image="Pics/PHOTO-2025-08-19-09-04-46 2.jpg">
+                <img src="Pics/PHOTO-2025-08-19-09-04-46 2.jpg" alt="Kitchen Details">
+            </div>
+            <div class="gallery-item fade-in" data-image="Pics/PHOTO-2025-08-19-09-04-46 3.jpg">
+                <img src="Pics/PHOTO-2025-08-19-09-04-46 3.jpg" alt="Kitchen Area">
+            </div>
         </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-close" id="lightboxClose">×</button>
+            <img class="lightbox-image" id="lightboxImage" src="" alt="">
+            <button class="lightbox-nav lightbox-prev" id="lightboxPrev">‹</button>
+            <button class="lightbox-nav lightbox-next" id="lightboxNext">›</button>
+            <div class="lightbox-counter" id="lightboxCounter">1 / 13</div>
+        </div>
+    </div>
     </section>
 
     <!-- Features Section -->
@@ -769,6 +914,83 @@
 
         document.querySelectorAll('.fade-in').forEach(el => {
             observer.observe(el);
+        });
+
+        // Lightbox functionality
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightboxImage');
+        const lightboxClose = document.getElementById('lightboxClose');
+        const lightboxPrev = document.getElementById('lightboxPrev');
+        const lightboxNext = document.getElementById('lightboxNext');
+        const lightboxCounter = document.getElementById('lightboxCounter');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        
+        let currentImageIndex = 0;
+        const images = Array.from(galleryItems).map(item => ({
+            src: item.dataset.image,
+            alt: item.querySelector('img').alt
+        }));
+
+        function openLightbox(index) {
+            currentImageIndex = index;
+            updateLightboxImage();
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function updateLightboxImage() {
+            const image = images[currentImageIndex];
+            lightboxImage.src = image.src;
+            lightboxImage.alt = image.alt;
+            lightboxCounter.textContent = `${currentImageIndex + 1} / ${images.length}`;
+        }
+
+        function nextImage() {
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            updateLightboxImage();
+        }
+
+        function prevImage() {
+            currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+            updateLightboxImage();
+        }
+
+        // Event listeners
+        galleryItems.forEach((item, index) => {
+            item.addEventListener('click', () => openLightbox(index));
+        });
+
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightboxNext.addEventListener('click', nextImage);
+        lightboxPrev.addEventListener('click', prevImage);
+
+        // Close lightbox when clicking outside the image
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+            
+            switch(e.key) {
+                case 'Escape':
+                    closeLightbox();
+                    break;
+                case 'ArrowLeft':
+                    prevImage();
+                    break;
+                case 'ArrowRight':
+                    nextImage();
+                    break;
+            }
         });
 
         // Form submission
