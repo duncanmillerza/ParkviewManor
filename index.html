@@ -216,54 +216,111 @@
         }
 
         /* Gallery */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1rem;
+        .gallery-container {
             margin: 4rem 0;
         }
 
-        .gallery-item {
-            aspect-ratio: 4/3;
-            overflow: hidden;
+        .main-gallery {
             position: relative;
-            cursor: pointer;
+            aspect-ratio: 16/10;
+            overflow: hidden;
+            border-radius: 12px;
             border: 1px solid #f0f0f0;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-radius: 8px;
+            margin-bottom: 1rem;
+            cursor: pointer;
         }
 
-        .gallery-item:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-        }
-
-        .gallery-item img {
+        .main-gallery img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.3s ease;
         }
 
-        .gallery-item:hover img {
+        .main-gallery:hover img {
+            transform: scale(1.02);
+        }
+
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            width: 3rem;
+            height: 3rem;
+            cursor: pointer;
+            font-size: 1.5rem;
+            border-radius: 50%;
+            transition: background 0.3s ease;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gallery-nav:hover {
+            background: rgba(0,0,0,0.8);
+        }
+
+        .gallery-prev {
+            left: 20px;
+        }
+
+        .gallery-next {
+            right: 20px;
+        }
+
+        .gallery-counter {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .gallery-thumbnails {
+            display: flex;
+            gap: 0.5rem;
+            overflow-x: auto;
+            padding: 0.5rem 0;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .gallery-thumbnails::-webkit-scrollbar {
+            display: none;
+        }
+
+        .thumbnail-item {
+            flex: 0 0 auto;
+            width: 80px;
+            height: 60px;
+            border-radius: 6px;
+            overflow: hidden;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: border-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .thumbnail-item.active {
+            border-color: #2c2c2c;
             transform: scale(1.05);
         }
 
-        .gallery-item::after {
-            content: '🔍';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 2rem;
-            color: white;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        .thumbnail-item:hover {
+            border-color: #666;
+            transform: scale(1.05);
         }
 
-        .gallery-item:hover::after {
-            opacity: 1;
+        .thumbnail-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         /* Lightbox */
@@ -643,45 +700,53 @@
     <!-- Gallery Section -->
     <section id="gallery" class="section section-alt">
         <h2 class="fade-in">GALLERY</h2>
-        <div class="gallery-grid">
-            <div class="gallery-item fade-in" data-image="Pics/Screenshot 2025-08-19 at 16.49.53.png">
-                <img src="Pics/Screenshot 2025-08-19 at 16.49.53.png" alt="Building Entrance">
+        <div class="gallery-container fade-in">
+            <div class="main-gallery" id="mainGallery">
+                <img id="mainGalleryImage" src="Pics/Screenshot 2025-08-19 at 16.49.53.png" alt="Building Entrance">
+                <button class="gallery-nav gallery-prev" id="galleryPrev">‹</button>
+                <button class="gallery-nav gallery-next" id="galleryNext">›</button>
+                <div class="gallery-counter" id="galleryCounter">1 / 13</div>
             </div>
-            <div class="gallery-item fade-in" data-image="Pics/PHOTO-2025-08-19-09-04-43.jpg">
-                <img src="Pics/PHOTO-2025-08-19-09-04-43.jpg" alt="Master Bedroom">
-            </div>
-            <div class="gallery-item fade-in" data-image="Pics/PHOTO-2025-08-19-09-04-43 2.jpg">
-                <img src="Pics/PHOTO-2025-08-19-09-04-43 2.jpg" alt="Bedroom Details">
-            </div>
-            <div class="gallery-item fade-in" data-image="Pics/PHOTO-2025-08-19-09-04-43 3.jpg">
-                <img src="Pics/PHOTO-2025-08-19-09-04-43 3.jpg" alt="Bedroom View">
-            </div>
-            <div class="gallery-item fade-in" data-image="Pics/PHOTO-2025-08-19-09-04-44.jpg">
-                <img src="Pics/PHOTO-2025-08-19-09-04-44.jpg" alt="Covered Parking">
-            </div>
-            <div class="gallery-item fade-in" data-image="Pics/PHOTO-2025-08-19-09-04-44 2.jpg">
-                <img src="Pics/PHOTO-2025-08-19-09-04-44 2.jpg" alt="Parking Area">
-            </div>
-            <div class="gallery-item fade-in" data-image="Pics/PHOTO-2025-08-19-09-04-44 3.jpg">
-                <img src="Pics/PHOTO-2025-08-19-09-04-44 3.jpg" alt="Parking Details">
-            </div>
-            <div class="gallery-item fade-in" data-image="Pics/PHOTO-2025-08-19-09-04-45.jpg">
-                <img src="Pics/PHOTO-2025-08-19-09-04-45.jpg" alt="Living Room">
-            </div>
-            <div class="gallery-item fade-in" data-image="Pics/PHOTO-2025-08-19-09-04-45 2.jpg">
-                <img src="Pics/PHOTO-2025-08-19-09-04-45 2.jpg" alt="Living Area">
-            </div>
-            <div class="gallery-item fade-in" data-image="Pics/PHOTO-2025-08-19-09-04-45 3.jpg">
-                <img src="Pics/PHOTO-2025-08-19-09-04-45 3.jpg" alt="Lounge Space">
-            </div>
-            <div class="gallery-item fade-in" data-image="Pics/PHOTO-2025-08-19-09-04-46.jpg">
-                <img src="Pics/PHOTO-2025-08-19-09-04-46.jpg" alt="Kitchen">
-            </div>
-            <div class="gallery-item fade-in" data-image="Pics/PHOTO-2025-08-19-09-04-46 2.jpg">
-                <img src="Pics/PHOTO-2025-08-19-09-04-46 2.jpg" alt="Kitchen Details">
-            </div>
-            <div class="gallery-item fade-in" data-image="Pics/PHOTO-2025-08-19-09-04-46 3.jpg">
-                <img src="Pics/PHOTO-2025-08-19-09-04-46 3.jpg" alt="Kitchen Area">
+            <div class="gallery-thumbnails">
+                <div class="thumbnail-item active" data-index="0">
+                    <img src="Pics/Screenshot 2025-08-19 at 16.49.53.png" alt="Building Entrance">
+                </div>
+                <div class="thumbnail-item" data-index="1">
+                    <img src="Pics/PHOTO-2025-08-19-09-04-43.jpg" alt="Master Bedroom">
+                </div>
+                <div class="thumbnail-item" data-index="2">
+                    <img src="Pics/PHOTO-2025-08-19-09-04-43 2.jpg" alt="Bedroom Details">
+                </div>
+                <div class="thumbnail-item" data-index="3">
+                    <img src="Pics/PHOTO-2025-08-19-09-04-43 3.jpg" alt="Bedroom View">
+                </div>
+                <div class="thumbnail-item" data-index="4">
+                    <img src="Pics/PHOTO-2025-08-19-09-04-44.jpg" alt="Covered Parking">
+                </div>
+                <div class="thumbnail-item" data-index="5">
+                    <img src="Pics/PHOTO-2025-08-19-09-04-44 2.jpg" alt="Parking Area">
+                </div>
+                <div class="thumbnail-item" data-index="6">
+                    <img src="Pics/PHOTO-2025-08-19-09-04-44 3.jpg" alt="Parking Details">
+                </div>
+                <div class="thumbnail-item" data-index="7">
+                    <img src="Pics/PHOTO-2025-08-19-09-04-45.jpg" alt="Living Room">
+                </div>
+                <div class="thumbnail-item" data-index="8">
+                    <img src="Pics/PHOTO-2025-08-19-09-04-45 2.jpg" alt="Living Area">
+                </div>
+                <div class="thumbnail-item" data-index="9">
+                    <img src="Pics/PHOTO-2025-08-19-09-04-45 3.jpg" alt="Lounge Space">
+                </div>
+                <div class="thumbnail-item" data-index="10">
+                    <img src="Pics/PHOTO-2025-08-19-09-04-46.jpg" alt="Kitchen">
+                </div>
+                <div class="thumbnail-item" data-index="11">
+                    <img src="Pics/PHOTO-2025-08-19-09-04-46 2.jpg" alt="Kitchen Details">
+                </div>
+                <div class="thumbnail-item" data-index="12">
+                    <img src="Pics/PHOTO-2025-08-19-09-04-46 3.jpg" alt="Kitchen Area">
+                </div>
             </div>
         </div>
     </section>
@@ -802,7 +867,7 @@
     <section id="costs" class="section">
         <h2 class="fade-in">RENTAL INFORMATION</h2>
         <div class="card fade-in" style="text-align: center;">
-            <h3 style="font-size: 2rem; font-weight: 300; margin-bottom: 1rem;"><span class="material-icons" style="vertical-align: middle; margin-right: 10px;">attach_money</span>R12,500 per month</h3>
+            <h3 style="font-size: 2rem; font-weight: 300; margin-bottom: 1rem;">R12,500 per month</h3>
             <p style="color: #666; margin-bottom: 2rem;">Everything included - no hidden fees</p>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 2rem;">
                 <div>
@@ -915,6 +980,14 @@
             observer.observe(el);
         });
 
+        // Gallery functionality
+        const mainGallery = document.getElementById('mainGallery');
+        const mainGalleryImage = document.getElementById('mainGalleryImage');
+        const galleryPrev = document.getElementById('galleryPrev');
+        const galleryNext = document.getElementById('galleryNext');
+        const galleryCounter = document.getElementById('galleryCounter');
+        const thumbnailItems = document.querySelectorAll('.thumbnail-item');
+        
         // Lightbox functionality
         const lightbox = document.getElementById('lightbox');
         const lightboxImage = document.getElementById('lightboxImage');
@@ -922,13 +995,56 @@
         const lightboxPrev = document.getElementById('lightboxPrev');
         const lightboxNext = document.getElementById('lightboxNext');
         const lightboxCounter = document.getElementById('lightboxCounter');
-        const galleryItems = document.querySelectorAll('.gallery-item');
         
         let currentImageIndex = 0;
-        const images = Array.from(galleryItems).map(item => ({
-            src: item.dataset.image,
+        const images = Array.from(thumbnailItems).map(item => ({
+            src: item.querySelector('img').src,
             alt: item.querySelector('img').alt
         }));
+
+        function updateMainGallery(index) {
+            currentImageIndex = index;
+            const image = images[index];
+            mainGalleryImage.src = image.src;
+            mainGalleryImage.alt = image.alt;
+            galleryCounter.textContent = `${index + 1} / ${images.length}`;
+            
+            // Update thumbnail active state
+            thumbnailItems.forEach((item, i) => {
+                item.classList.toggle('active', i === index);
+            });
+        }
+
+        function nextGalleryImage() {
+            const nextIndex = (currentImageIndex + 1) % images.length;
+            updateMainGallery(nextIndex);
+        }
+
+        function prevGalleryImage() {
+            const prevIndex = (currentImageIndex - 1 + images.length) % images.length;
+            updateMainGallery(prevIndex);
+        }
+
+        // Gallery event listeners
+        galleryPrev.addEventListener('click', (e) => {
+            e.stopPropagation();
+            prevGalleryImage();
+        });
+        galleryNext.addEventListener('click', (e) => {
+            e.stopPropagation();
+            nextGalleryImage();
+        });
+
+        thumbnailItems.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                updateMainGallery(index);
+            });
+        });
+
+        // Click main gallery to open lightbox
+        mainGallery.addEventListener('click', () => {
+            openLightbox(currentImageIndex);
+        });
 
         function openLightbox(index) {
             currentImageIndex = index;
@@ -949,24 +1065,22 @@
             lightboxCounter.textContent = `${currentImageIndex + 1} / ${images.length}`;
         }
 
-        function nextImage() {
+        function nextLightboxImage() {
             currentImageIndex = (currentImageIndex + 1) % images.length;
             updateLightboxImage();
+            updateMainGallery(currentImageIndex);
         }
 
-        function prevImage() {
+        function prevLightboxImage() {
             currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
             updateLightboxImage();
+            updateMainGallery(currentImageIndex);
         }
 
-        // Event listeners
-        galleryItems.forEach((item, index) => {
-            item.addEventListener('click', () => openLightbox(index));
-        });
-
+        // Lightbox event listeners
         lightboxClose.addEventListener('click', closeLightbox);
-        lightboxNext.addEventListener('click', nextImage);
-        lightboxPrev.addEventListener('click', prevImage);
+        lightboxNext.addEventListener('click', nextLightboxImage);
+        lightboxPrev.addEventListener('click', prevLightboxImage);
 
         // Close lightbox when clicking outside the image
         lightbox.addEventListener('click', (e) => {
@@ -977,18 +1091,18 @@
 
         // Keyboard navigation
         document.addEventListener('keydown', (e) => {
-            if (!lightbox.classList.contains('active')) return;
-            
-            switch(e.key) {
-                case 'Escape':
-                    closeLightbox();
-                    break;
-                case 'ArrowLeft':
-                    prevImage();
-                    break;
-                case 'ArrowRight':
-                    nextImage();
-                    break;
+            if (lightbox.classList.contains('active')) {
+                switch(e.key) {
+                    case 'Escape':
+                        closeLightbox();
+                        break;
+                    case 'ArrowLeft':
+                        prevLightboxImage();
+                        break;
+                    case 'ArrowRight':
+                        nextLightboxImage();
+                        break;
+                }
             }
         });
 
