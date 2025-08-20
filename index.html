@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parkview Manor - Choose Your Style</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Parkview Manor - Premium Flat in Johannesburg</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -16,236 +18,368 @@
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
             color: #2c2c2c;
-            background: #ffffff;
-            min-height: 100vh;
+            background-color: #ffffff;
             overflow-x: hidden;
         }
 
-        /* Style Selection */
-        .style-selection {
-            padding: 4rem 5%;
-            max-width: 1200px;
-            margin: 0 auto;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 5%;
+            border-bottom: 1px solid #f0f0f0;
+            transition: all 0.3s ease;
         }
 
-        .selection-title {
-            text-align: center;
-            font-size: 3rem;
-            font-weight: 300;
-            margin-bottom: 1rem;
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2c2c2c;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #666;
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
             color: #2c2c2c;
         }
 
-        .selection-subtitle {
-            text-align: center;
-            color: #666;
-            margin-bottom: 3rem;
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .styles-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 3rem;
-            margin: 4rem 0;
-        }
-
-        .style-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: 3px solid transparent;
-        }
-
-        .style-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-
-        .style-card.industrial:hover {
-            border-color: #4a4a4a;
-        }
-
-        .style-card.minimalist:hover {
-            border-color: #2c2c2c;
-        }
-
-        .style-card.luxury:hover {
-            border-color: #8B7355;
-        }
-
-        .style-preview {
-            height: 250px;
-            background-size: cover;
-            background-position: center;
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: 
+                linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)),
+                url('Pics/Screenshot 2025-08-19 at 16.49.53.png') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             position: relative;
+            overflow: hidden;
         }
 
-        .style-preview::before {
+        .hero::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, rgba(0,0,0,0.3), rgba(0,0,0,0.1));
+            background: rgba(255, 255, 255, 0.8);
         }
 
-        .style-card.industrial .style-preview {
-            background: linear-gradient(45deg, #2c2c2c 0%, #4a4a4a 100%);
-        }
-
-        .style-card.minimalist .style-preview {
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-        }
-
-        .style-card.luxury .style-preview {
-            background: linear-gradient(135deg, #8B7355 0%, #a0845f 100%);
-        }
-
-        .style-label {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            font-size: 1.8rem;
-            font-weight: 300;
-            letter-spacing: 2px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-
-        .style-card.minimalist .style-label {
+        .hero-content {
+            text-align: center;
             color: #2c2c2c;
-            text-shadow: none;
+            z-index: 2;
+            max-width: 600px;
+            padding: 3rem;
         }
 
-        .style-content {
-            padding: 2.5rem;
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            letter-spacing: -2px;
+            line-height: 1.1;
         }
 
-        .style-title {
-            font-size: 1.5rem;
-            font-weight: 600;
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            font-weight: 300;
+            color: #666;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: #2c2c2c;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            border-radius: 0;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .cta-button:hover {
+            background: #000;
+            transform: translateY(-2px);
+        }
+
+        /* Sections */
+        .section {
+            padding: 5rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-alt {
+            background: #f8f9fa;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 3rem;
+            color: #2c2c2c;
+            text-align: center;
+            letter-spacing: -1px;
+        }
+
+        /* Cards and Content */
+        .card {
+            background: white;
+            padding: 3rem;
+            margin: 2rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border: 1px solid #f0f0f0;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+            margin: 4rem 0;
+        }
+
+        .about-text h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #2c2c2c;
+            font-weight: 500;
+        }
+
+        .about-text p {
+            color: #666;
+            line-height: 1.7;
             margin-bottom: 1rem;
         }
 
-        .style-card.industrial .style-title {
-            color: #4a4a4a;
+        /* Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin: 4rem 0;
         }
 
-        .style-card.minimalist .style-title {
+        .gallery-item {
+            aspect-ratio: 4/3;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            border: 1px solid #f0f0f0;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        /* Features */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 2.5rem 1.5rem;
+            background: white;
+            border: 1px solid #f0f0f0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
             color: #2c2c2c;
-        }
-
-        .style-card.luxury .style-title {
-            color: #8B7355;
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-        }
-
-        .style-description {
-            color: #666;
             margin-bottom: 1.5rem;
+        }
+
+        .feature-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: #2c2c2c;
+            font-weight: 500;
+        }
+
+        .feature-item p {
+            color: #666;
+            font-size: 0.95rem;
             line-height: 1.6;
         }
 
-        .style-features {
-            list-style: none;
+        /* Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin: 4rem 0;
+            padding: 3rem 0;
+            border-top: 1px solid #f0f0f0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 300;
+            color: #2c2c2c;
+            display: block;
+            letter-spacing: -1px;
+        }
+
+        .stat-item span:last-child {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Contact */
+        .contact-section {
+            background: #2c2c2c;
+            color: white;
+            padding: 5rem 5%;
+            margin-top: 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: white;
+            font-weight: 500;
+        }
+
+        .contact-info p {
+            margin-bottom: 1rem;
+            color: #ccc;
+        }
+
+        .form-group {
             margin-bottom: 2rem;
         }
 
-        .style-features li {
-            padding: 0.3rem 0;
-            color: #666;
-            font-size: 0.95rem;
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #555;
+            background: rgba(255,255,255,0.05);
+            color: white;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
         }
 
-        .style-features li::before {
-            content: '→';
-            margin-right: 10px;
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: white;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
             color: #999;
         }
 
-        .style-card.industrial .style-features li::before {
-            color: #4a4a4a;
-        }
-
-        .style-card.minimalist .style-features li::before {
+        .submit-btn {
+            background: white;
             color: #2c2c2c;
-        }
-
-        .style-card.luxury .style-features li::before {
-            color: #8B7355;
-        }
-
-        .view-style-btn {
-            display: block;
-            width: 100%;
-            padding: 1rem 2rem;
+            padding: 1rem 2.5rem;
             border: none;
-            border-radius: 5px;
-            font-weight: 500;
-            font-size: 1rem;
             cursor: pointer;
+            font-weight: 500;
+            font-family: 'Inter', sans-serif;
             transition: all 0.3s ease;
-            text-decoration: none;
-            text-align: center;
-            text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
-        .style-card.industrial .view-style-btn {
-            background: #4a4a4a;
-            color: white;
+        .submit-btn:hover {
+            background: #f0f0f0;
         }
 
-        .style-card.industrial .view-style-btn:hover {
-            background: #2c2c2c;
+        /* Map */
+        .map-container {
+            height: 400px;
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 2rem 0;
+            border: 1px solid #f0f0f0;
         }
-
-        .style-card.minimalist .view-style-btn {
-            background: #2c2c2c;
-            color: white;
-        }
-
-        .style-card.minimalist .view-style-btn:hover {
-            background: #1a1a1a;
-        }
-
-        .style-card.luxury .view-style-btn {
-            background: #8B7355;
-            color: white;
-        }
-
-        .style-card.luxury .view-style-btn:hover {
-            background: #a0845f;
-        }
-
 
         /* Responsive */
         @media (max-width: 768px) {
-            .selection-title {
-                font-size: 2rem;
+            .hero h1 {
+                font-size: 2.5rem;
             }
 
-            .styles-grid {
+            .section {
+                padding: 3rem 5%;
+            }
+
+            .about-grid,
+            .contact-grid {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
 
-            .style-selection {
-                padding: 3rem 5%;
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .nav-links {
+                display: none;
             }
         }
 
@@ -253,107 +387,298 @@
         .fade-in {
             opacity: 0;
             transform: translateY(30px);
-            animation: fadeInUp 0.8s ease forwards;
+            transition: all 0.8s ease;
         }
 
-        .fade-in:nth-child(1) { animation-delay: 0.1s; }
-        .fade-in:nth-child(2) { animation-delay: 0.2s; }
-        .fade-in:nth-child(3) { animation-delay: 0.3s; }
-
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
-    <!-- Style Selection -->
-    <section class="style-selection">
-        <h2 class="selection-title">Parkview Manor - Choose Your Style</h2>
-        <p class="selection-subtitle">Select the design aesthetic that best represents your vision. Each style showcases the same beautiful furnished apartment with different visual presentations.</p>
-        
-        <div class="styles-grid">
-            <!-- Style A: Industrial Elegance -->
-            <div class="style-card industrial fade-in">
-                <div class="style-preview">
-                    <div class="style-label">INDUSTRIAL</div>
-                </div>
-                <div class="style-content">
-                    <h3 class="style-title">Industrial Elegance</h3>
-                    <p class="style-description">Bold and sophisticated with angular design elements, dark greys, and strong geometric patterns. Perfect for those who appreciate modern industrial aesthetics.</p>
-                    <ul class="style-features">
-                        <li>Angular diagonal overlays</li>
-                        <li>Dark grey and neutral palette</li>
-                        <li>Bold typography with impact</li>
-                        <li>Strong geometric elements</li>
-                        <li>Professional and edgy</li>
-                    </ul>
-                    <a href="style-a-industrial.html" class="view-style-btn">View Industrial Style</a>
-                </div>
-            </div>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">Parkview Manor</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#location">Location</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
 
-            <!-- Style B: Modern Minimalist -->
-            <div class="style-card minimalist fade-in">
-                <div class="style-preview">
-                    <div class="style-label">MINIMALIST</div>
-                </div>
-                <div class="style-content">
-                    <h3 class="style-title">Modern Minimalist</h3>
-                    <p class="style-description">Clean, bright, and uncluttered design with plenty of white space. Emphasizes simplicity and functionality with subtle elegance.</p>
-                    <ul class="style-features">
-                        <li>Clean white backgrounds</li>
-                        <li>Subtle shadows and borders</li>
-                        <li>Light, airy typography</li>
-                        <li>Minimal visual elements</li>
-                        <li>Fresh and contemporary</li>
-                    </ul>
-                    <a href="style-b-minimalist.html" class="view-style-btn">View Minimalist Style</a>
-                </div>
-            </div>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>FULLY<br>FURNISHED</h1>
+            <p>Premium apartment at Parkview Manor, Parkview - 20 minutes to Chris Hani Baragwanath Hospital</p>
+            <a href="#about" class="cta-button">View Details</a>
+        </div>
+    </section>
 
-            <!-- Style C: Luxury Classic -->
-            <div class="style-card luxury fade-in">
-                <div class="style-preview">
-                    <div class="style-label">LUXURY</div>
-                </div>
-                <div class="style-content">
-                    <h3 class="style-title">Luxury Classic</h3>
-                    <p class="style-description">Sophisticated and timeless with elegant serif typography, warm earth tones, and refined decorative elements. Appeals to discerning tastes.</p>
-                    <ul class="style-features">
-                        <li>Elegant serif typography</li>
-                        <li>Warm earth tone accents</li>
-                        <li>Decorative border elements</li>
-                        <li>Premium visual treatments</li>
-                        <li>Timeless and sophisticated</li>
-                    </ul>
-                    <a href="style-c-luxury.html" class="view-style-btn">View Luxury Style</a>
-                </div>
+    <!-- About Section -->
+    <section id="about" class="section">
+        <h2 class="fade-in">FULLY FURNISHED APARTMENT</h2>
+        <div class="about-grid">
+            <div class="about-text fade-in">
+                <h3>Prime Parkview Location</h3>
+                <p>Located at Parkview Manor in the charming suburb of Parkview, this fully furnished apartment offers the perfect blend of comfort and convenience. Just 20 minutes to Chris Hani Baragwanath Academic Hospital with a stress-free commute against traffic both morning and afternoon.</p>
+                <p>The secure complex features 24-hour guard control, ensuring your peace of mind in this desirable first-floor unit.</p>
+            </div>
+            <div class="about-text fade-in">
+                <h3>Everything Included</h3>
+                <p>This thoughtfully furnished apartment comes with everything you need for comfortable living. From high-quality furniture to modern appliances, every detail has been considered to provide a premium living experience.</p>
+                <p>The stylish contemporary design features clean lines, premium finishes, and a sophisticated neutral palette that creates the perfect modern living environment.</p>
+            </div>
+        </div>
+        <div class="stats-grid fade-in">
+            <div class="stat-item">
+                <span class="stat-number">2</span>
+                <span>Bedrooms</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">2</span>
+                <span>Bathrooms</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">24/7</span>
+                <span>Security</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">1st</span>
+                <span>Floor Unit</span>
             </div>
         </div>
     </section>
 
+    <!-- Gallery Section -->
+    <section id="gallery" class="section section-alt">
+        <h2 class="fade-in">GALLERY</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item fade-in">
+                <img src="Pics/PHOTO-2025-08-19-09-04-43.jpg" alt="Master Bedroom">
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="Pics/PHOTO-2025-08-19-09-04-45.jpg" alt="Living Room">
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="Pics/PHOTO-2025-08-19-09-04-46.jpg" alt="Kitchen">
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="Pics/PHOTO-2025-08-19-09-04-44.jpg" alt="Parking">
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="Pics/PHOTO-2025-08-19-09-04-43 2.jpg" alt="Bedroom Detail">
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="Pics/PHOTO-2025-08-19-09-04-45 2.jpg" alt="Living Area">
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="section">
+        <h2 class="fade-in">APARTMENT FEATURES</h2>
+        <div class="features-grid">
+            <div class="feature-item fade-in">
+                <div class="feature-icon">
+                    <span class="material-icons">security</span>
+                </div>
+                <h3>24-Hour Security</h3>
+                <p>Secure complex with 24-hour guard control for complete peace of mind</p>
+            </div>
+            <div class="feature-item fade-in">
+                <div class="feature-icon">
+                    <span class="material-icons">bed</span>
+                </div>
+                <h3>2 Furnished Bedrooms</h3>
+                <p>Each with queen-sized beds and built-in cupboards, fully furnished and ready to move in</p>
+            </div>
+            <div class="feature-item fade-in">
+                <div class="feature-icon">
+                    <span class="material-icons">kitchen</span>
+                </div>
+                <h3>Fully Equipped Kitchen</h3>
+                <p>Oven, stove, microwave, air fryer, fridge, washing machine, and dishwasher included</p>
+            </div>
+            <div class="feature-item fade-in">
+                <div class="feature-icon">
+                    <span class="material-icons">wifi</span>
+                </div>
+                <h3>Uncapped Wi-Fi Included</h3>
+                <p>High-speed internet connection included in rental - stay connected without extra costs</p>
+            </div>
+            <div class="feature-item fade-in">
+                <div class="feature-icon">
+                    <span class="material-icons">local_parking</span>
+                </div>
+                <h3>Roofed Parking Bay</h3>
+                <p>One covered parking bay included plus ample visitor parking available</p>
+            </div>
+            <div class="feature-item fade-in">
+                <div class="feature-icon">
+                    <span class="material-icons">power</span>
+                </div>
+                <h3>Backup Power System</h3>
+                <p>Inverter backup power system ensures uninterrupted electricity supply</p>
+            </div>
+            <div class="feature-item fade-in">
+                <div class="feature-icon">
+                    <span class="material-icons">bathtub</span>
+                </div>
+                <h3>2 Modern Bathrooms</h3>
+                <p>One en-suite, one adjacent to second bedroom - both with contemporary fittings</p>
+            </div>
+            <div class="feature-item fade-in">
+                <div class="feature-icon">
+                    <span class="material-icons">deck</span>
+                </div>
+                <h3>Private Balcony</h3>
+                <p>Perfect for relaxing or entertaining with outdoor space and fresh air</p>
+            </div>
+            <div class="feature-item fade-in">
+                <div class="feature-icon">
+                    <span class="material-icons">cleaning_services</span>
+                </div>
+                <h3>Optional Cleaning Service</h3>
+                <p>Weekly cleaning services available - R400 full day or R250 half day</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="location" class="section section-alt">
+        <h2 class="fade-in">PRIME PARKVIEW LOCATION</h2>
+        <div class="about-grid">
+            <div class="about-text fade-in">
+                <h3>Perfect for Healthcare Professionals</h3>
+                <p>Located in the charming suburb of Parkview, this apartment is strategically positioned just 20 minutes from Chris Hani Baragwanath Academic Hospital. Enjoy a stress-free commute against traffic both in the morning and late afternoon.</p>
+                <p>Parkview is known for its tree-lined streets, excellent security, and peaceful residential atmosphere.</p>
+            </div>
+            <div class="about-text fade-in">
+                <h3>Everything You Need Nearby</h3>
+                <p>The location offers unmatched convenience with restaurants, petrol stations, and shopping all within easy reach. Rosebank Mall is only 5 minutes away for all your shopping and entertainment needs.</p>
+                <p>Public transport links and major highways provide excellent connectivity to the rest of Johannesburg.</p>
+            </div>
+        </div>
+        <div class="map-container fade-in">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3581.0876205892346!2d28.0089!3d-26.1289!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e950c0c0c0c0c0c%3A0x0!2s7%20Lower%20Park%20Dr%2C%20Parkview%2C%20Randburg%2C%202193!5e0!3m2!1sen!2sza!4v1234567890"
+                width="100%" 
+                height="100%" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy">
+            </iframe>
+        </div>
+        <div class="address-info fade-in" style="text-align: center; margin-top: 2rem;">
+            <h3 style="color: #2c2c2c; margin-bottom: 1rem;"><span class="material-icons" style="vertical-align: middle; margin-right: 5px;">location_on</span>Parkview Manor</h3>
+            <p style="color: #666; font-size: 1.1rem;">7 Lower Park Dr, Parkview, Randburg, 2193</p>
+        </div>
+    </section>
+
+    <!-- Costs Section -->
+    <section id="costs" class="section">
+        <h2 class="fade-in">RENTAL INFORMATION</h2>
+        <div class="card fade-in" style="text-align: center;">
+            <h3 style="font-size: 2rem; font-weight: 300; margin-bottom: 1rem;"><span class="material-icons" style="vertical-align: middle; margin-right: 10px;">attach_money</span>R12,500 per month</h3>
+            <p style="color: #666; margin-bottom: 2rem;">Everything included - no hidden fees</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                <div>
+                    <h4 style="color: #2c2c2c; margin-bottom: 0.5rem;">✓ Uncapped Wi-Fi</h4>
+                    <h4 style="color: #2c2c2c; margin-bottom: 0.5rem;">✓ Covered Parking</h4>
+                </div>
+                <div>
+                    <h4 style="color: #2c2c2c; margin-bottom: 0.5rem;">✓ All Furniture & Appliances</h4>
+                    <h4 style="color: #2c2c2c; margin-bottom: 0.5rem;">✓ 24/7 Security</h4>
+                </div>
+            </div>
+            <p style="margin-top: 2rem; color: #666; font-style: italic;">Optional cleaning service: R400 (full day) or R250 (half day)</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <h2 class="fade-in" style="color: white;">Get In Touch</h2>
+        <div class="contact-grid">
+            <div class="contact-info fade-in">
+                <h3>Contact Information</h3>
+                <p><span class="material-icons" style="vertical-align: middle; margin-right: 5px;">email</span> Available upon inquiry</p>
+                <p><span class="material-icons" style="vertical-align: middle; margin-right: 5px;">phone</span> Available upon inquiry</p>
+                <p><span class="material-icons" style="vertical-align: middle; margin-right: 5px;">location_on</span> Parkview, Johannesburg</p>
+                
+                <h3 style="margin-top: 3rem;">Perfect For</h3>
+                <p><span class="material-icons" style="vertical-align: middle; margin-right: 5px; color: #4a4a4a;">check_circle</span>Healthcare professionals at Chris Hani Baragwanath</p>
+                <p><span class="material-icons" style="vertical-align: middle; margin-right: 5px; color: #4a4a4a;">check_circle</span>Working professionals seeking convenience</p>
+                <p><span class="material-icons" style="vertical-align: middle; margin-right: 5px; color: #4a4a4a;">check_circle</span>Anyone wanting fully furnished accommodation</p>
+                
+                <h3 style="margin-top: 3rem;">Key Benefits</h3>
+                <p><span class="material-icons" style="vertical-align: middle; margin-right: 5px; color: #4a4a4a;">home</span>Move-in ready - fully furnished</p>
+                <p><span class="material-icons" style="vertical-align: middle; margin-right: 5px; color: #4a4a4a;">directions_car</span>Stress-free commute against traffic</p>
+                <p><span class="material-icons" style="vertical-align: middle; margin-right: 5px; color: #4a4a4a;">security</span>24-hour security for peace of mind</p>
+                <p><span class="material-icons" style="vertical-align: middle; margin-right: 5px; color: #4a4a4a;">monetization_on</span>All-inclusive pricing with Wi-Fi & parking</p>
+            </div>
+            <form class="contact-form fade-in" id="contactForm">
+                <div class="form-group">
+                    <input type="text" name="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" name="phone" placeholder="Phone Number">
+                </div>
+                <div class="form-group">
+                    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Inquiry</button>
+            </form>
+        </div>
+    </section>
+
     <script>
-        // Add smooth scrolling and any interactive elements
-        document.querySelectorAll('.style-card').forEach(card => {
-            card.addEventListener('click', function(e) {
-                if (e.target.tagName !== 'A') {
-                    const link = this.querySelector('.view-style-btn');
-                    window.location.href = link.href;
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
                 }
             });
         });
 
-        // Add hover effects enhancement
-        document.querySelectorAll('.style-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-10px) scale(1.02)';
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
             });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1)';
-            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your inquiry! We will contact you within 24 hours.');
+            this.reset();
         });
     </script>
 </body>
